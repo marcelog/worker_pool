@@ -61,7 +61,7 @@ best_worker(Sup) ->
 random_worker(Sup) ->
     case wpool_size(Sup) of
         undefined  -> throw(no_workers);
-        Wpool_Size -> _ = random:seed(now()), worker_name(Sup, random:uniform(Wpool_Size))
+        Wpool_Size -> _ = random:seed(os:timestamp()), worker_name(Sup, random:uniform(Wpool_Size))
     end.
 
 %% @doc Picks the next worker in a round robin fashion
